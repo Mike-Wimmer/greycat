@@ -13,6 +13,7 @@ class Jumper{
 	}
 	def jump(){
 		println "Hello world"
+		Thread.sleep(2000)
 	}
 }
 

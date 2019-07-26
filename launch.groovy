@@ -19,9 +19,16 @@ if(gameController==null){
 	println "Exiting script"
 	return 
 }
+def myJumperObject = ScriptingEngine.gitScriptRun(
+	            "https://github.com/Mike-Wimmer/greycat.git", // git location of the library
+	            "JumpScript.groovy" , // file to load
+	            // Parameters passed to the function
+	            [cat]
+	            )
 int [] data = gameController.getData() 
 double toSeconds=0.01//100 ms for each increment
 println "Starting controller loop..."
+boolean JumpButtonPressed = false
 while (!Thread.interrupted() ){
 	Thread.sleep((long)(toSeconds*1000))
 	data = gameController.getData() 
@@ -30,6 +37,17 @@ while (!Thread.interrupted() ){
 	double rzdata = data[2]
 	double rxdata = data[0]
 	double rydata = data[1]
+	//println data
+	if(JumpButtonPressed==false){
+		if(data[9]>0){
+			JumpButtonPressed=true
+			myJumperObject.jump()
+		}
+	}else{
+		if(data[9]<=0){
+			JumpButtonPressed=false
+		}
+	}
 	/*
 	if(xdata<0)
 		xdata+=256
