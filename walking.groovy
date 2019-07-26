@@ -43,10 +43,10 @@ double stepOverHeight=7.5;
 	int numStepCycleGroups = 2
 	
 	double standardHeadTailAngle = -20
-	double staticPanOffset = 20
+	double staticPanOffset = 30
 	double coriolisGain = 1.1
 	boolean headStable = true
-	double maxBodyDisplacementPerStep = 40
+	double maxBodyDisplacementPerStep = 20
 	double minBodyDisplacementPerStep = 30
 	def ar =  [stepOverHeight,
 	stepOverTime,
